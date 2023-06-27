@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mergingArray.css">
+</head>
+<body>
+    <div id ="wrapper">
+        <h1>
+            <input type ="text" id ="name" placeholder="Enter Your Name "></input>
+            <input type ="number" id ="age" placeholder="Enter Your Age "></input>
+        </h1>
+        <button id ="Add">Add</button>
+        <button id ="printTable">Print Table</button>
+    </div>
+    
+    <p id ="result"></p>
+
+    <table>
+        <thead >
+            <tr>
+                <td>sr.no</td>
+                <td>name</td>
+                <td>age</td>
+
+            </tr>
+        </thead>
+
+    </table>
+
+    <script>
+
+         
+        const btn = document.querySelector("#Add");
+        const name = document.querySelector("#name");
+        const printTable = document.querySelector("#printTable");
+        const age = document.querySelector("#age");
+        const result = document.querySelector("#result");
+        const table = document.querySelector("table")
+        const tr = document.querySelector("tr")
+
+        const td = document.querySelector("td")
+
+
+         table.style.display ="none"
+        const display =[]
+        
+
+      btn.addEventListener("click",function(){  
+        
+          result.innerHTML += name.value +"<br>" + age.value + "<br>";
+      
+            
+           
+                display.push({
+                    name: name.value,
+                    age: age.value  
+                }); 
+                
+            
+                    
+            
+                    
+
+    name.value ="";
+    age.value = "";
+    });
+        
+ 
+
+printTable.addEventListener("click",function(){
+    if(document.querySelector("tbody")) document.querySelector("table").remove()
+
+    table.style.display ="block"
+    // console.log("Hello")
+    result.innerHTML= "";
+
+    
+    
+  
+
+    let tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    
+    
+    display.forEach((list, index)=>{
+        
+ 
+           let row = document.createElement("tr");
+           tbody.appendChild(row)
+
+           let cell = document.createElement("td")
+           let cell1 =  document.createElement("td");
+           let cell2 =  document.createElement("td");
+
+           
+           row.appendChild(cell)
+           row.appendChild(cell1);
+           row.appendChild(cell2);
+         // console.log("hello")
+                
+
+                    cell.innerHTML = index+1
+                  
+                    
+                    cell1.innerHTML = list.name
+                    
+                    cell2.innerHTML = list.age
+                    
+                
+           
+           
+       
+
+           
+           
+           
+           
+           
+        })
+           
+           
+          
+        
+
+    
+
+
+  
+
+  
+
+
+    });
+
+
+    </script>
+</body>
+</html>
